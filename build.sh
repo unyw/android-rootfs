@@ -5,7 +5,7 @@
 # License: MIT
 cd "$(dirname "${BASH_SOURCE[0]}")"
 export BDIR=`realpath .`
-
+export REPO="https://unyw.github.io/repo-main"
 
 # Clean old dist and download repositories' keys
 rm -rf 'dist' && mkdir 'dist'
@@ -24,10 +24,13 @@ buildRootfs(){
   echo "
 --> installing repos and packages
 "
-  echo "" >> etc/apk/repositories
+  echo "$REPO/stable" >> etc/apk/repositories
+  #echo "https://unyw.github.io/repo-main/stable" >> etc/apk/repositories
+  
   # AGGIUNGI QUI LE CHIAVI
-
-  proot $PROOT_ARGS -S . -w / apk add --no-cache x11vnc xvfb xterm bspwm
+  wget -P etc/apk/keys "$REPO/unyw@key.rsa.pub"
+  proot $PROOT_ARGS -S . -w / apk add --no-cache --virtual unyw unyw-bridge-android
+  proot $PROOT_ARGS -S . -w / apk add --no-cache xterm unyw-app-xterm unyw-app-home
 
 
   echo '
