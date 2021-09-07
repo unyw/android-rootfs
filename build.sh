@@ -25,12 +25,12 @@ buildRootfs(){
 --> installing repos and packages
 "
   echo "$REPO/stable" >> etc/apk/repositories
-  #echo "https://unyw.github.io/repo-main/stable" >> etc/apk/repositories
+
   
-  # AGGIUNGI QUI LE CHIAVI
+  # Add unyw repo keys
   wget -P etc/apk/keys "$REPO/unyw@key.rsa.pub"
   proot $PROOT_ARGS -S . -w / apk add --no-cache --virtual unyw unyw-bridge-android
-  proot $PROOT_ARGS -S . -w / apk add --no-cache xterm unyw-app-xterm unyw-app-home
+  proot $PROOT_ARGS -S . -w / apk add --no-cache xterm pulseaudio unyw-app-xterm unyw-app-home
 
 
   echo '
