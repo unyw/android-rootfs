@@ -3,7 +3,7 @@ Alpine root filesystem used by the Unyw apk.
 
 ## Build
 LINUX REQUIRED.  
-Be sure that `bash`, `tar`, `wget`, `realpath`, `md5sum`, proot` and `qemu` (`qemu-aarch64-static` and `qemu-arm-static`) are avaiable on your system.
+Be sure that `bash`, `tar`, `wget`, `realpath`, `md5sum`, `proot` and `qemu` (`qemu-aarch64-static` and `qemu-arm-static`) are avaiable on your system.
 Then, just run: 
 ```bash
 bash build.sh
